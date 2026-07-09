@@ -1,4 +1,7 @@
-/* ---------- RESET ---------- */
+/* ==========================================================
+   NIKA Talent Solutions
+   Global Styles
+========================================================== */
 
 *{
     margin:0;
@@ -11,30 +14,159 @@ html{
 }
 
 body{
-    font-family:'Poppins',sans-serif;
-    background:#F8FAFC;
-    color:#0F172A;
-}
 
-a{
-    text-decoration:none;
+    font-family:'Poppins',sans-serif;
+
+    background:#F8FAFC;
+
+    color:#0F172A;
+
+    overflow-x:hidden;
+
 }
 
 img{
+
     max-width:100%;
+
+    display:block;
+
+}
+
+a{
+
+    text-decoration:none;
+
+    color:inherit;
+
 }
 
 button{
+
+    border:none;
+
+    outline:none;
+
     cursor:pointer;
+
     font-family:inherit;
+
+}
+
+input,
+textarea,
+select{
+
+    font-family:inherit;
+
+    outline:none;
+
 }
 
 section{
-    padding:60px 22px;
+
+    padding:70px 22px;
+
 }
 
 .container{
+
     width:100%;
+
     max-width:1200px;
+
     margin:auto;
+
+}
+
+/* ---------- Colors ---------- */
+
+:root{
+
+    --primary:#2563EB;
+
+    --primary-light:#DBEAFE;
+
+    --dark:#0F172A;
+
+    --text:#475569;
+
+    --white:#FFFFFF;
+
+    --background:#F8FAFC;
+
+    --success:#22C55E;
+
+    --warning:#F59E0B;
+
+    --danger:#EF4444;
+
+}
+
+/* ---------- Headings ---------- */
+
+h1{
+
+    font-size:44px;
+
+    font-weight:700;
+
+    line-height:1.2;
+
+}
+
+h2{
+
+    font-size:34px;
+
+    font-weight:700;
+
+}
+
+h3{
+
+    font-size:24px;
+
+    font-weight:600;
+
+}
+
+p{
+
+    color:var(--text);
+
+    line-height:1.8;
+
+}
+
+/* ---------- Utility ---------- */
+
+.text-center{
+
+    text-align:center;
+
+}
+
+.mt-1{
+
+    margin-top:10px;
+
+}
+
+.mt-2{
+
+    margin-top:20px;
+
+}
+
+.mt-3{
+
+    margin-top:30px;
+
+}
+
+.mt-4{
+
+    margin-top:40px;
+
 }
