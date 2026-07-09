@@ -1,17 +1,125 @@
-/* ===========================
+/* ==========================================================
    FOOTER
-=========================== */
+========================================================== */
 
 footer{
 
-padding:30px 20px;
+    margin-top:70px;
 
-background:#0F172A;
+    background:#0F172A;
 
-color:white;
+    color:white;
 
-text-align:center;
+    padding:60px 22px 30px;
 
-margin-top:60px;
+}
+
+.footer-container{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:30px;
+
+}
+
+.footer-logo h2{
+
+    color:white;
+
+    font-size:30px;
+
+}
+
+.footer-logo span{
+
+    color:#94A3B8;
+
+    font-size:14px;
+
+}
+
+.footer-about{
+
+    color:#CBD5E1;
+
+    line-height:1.8;
+
+}
+
+.footer-links{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+.footer-links a{
+
+    color:#E2E8F0;
+
+    transition:.25s;
+
+}
+
+.footer-links a:hover{
+
+    color:white;
+
+    transform:translateX(5px);
+
+}
+
+.footer-contact{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+.footer-contact p{
+
+    color:#CBD5E1;
+
+}
+
+.footer-bottom{
+
+    margin-top:40px;
+
+    padding-top:25px;
+
+    border-top:1px solid rgba(255,255,255,.1);
+
+    text-align:center;
+
+}
+
+.footer-bottom p{
+
+    color:#94A3B8;
+
+    font-size:14px;
+
+}
+
+@media(min-width:768px){
+
+.footer-container{
+
+display:grid;
+
+grid-template-columns:2fr 1fr 1fr;
+
+gap:60px;
+
+}
 
 }
