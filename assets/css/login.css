@@ -1,1 +1,115 @@
- 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#f5f9ff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    padding:20px;
+}
+
+.container{
+    width:100%;
+    max-width:400px;
+    background:#fff;
+    border-radius:25px;
+    padding:35px 25px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.logo{
+    text-align:center;
+    color:#2F66F6;
+    font-size:42px;
+    font-weight:800;
+}
+
+.subtitle{
+    text-align:center;
+    color:#666;
+    margin-top:5px;
+    margin-bottom:35px;
+}
+
+h2{
+    text-align:center;
+    color:#111827;
+    margin-bottom:10px;
+}
+
+p{
+    text-align:center;
+    color:#666;
+    margin-bottom:25px;
+    line-height:1.6;
+}
+
+.input-group{
+    margin-bottom:20px;
+}
+
+label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:600;
+}
+
+input{
+    width:100%;
+    padding:15px;
+    border:2px solid #E5E7EB;
+    border-radius:12px;
+    font-size:16px;
+    outline:none;
+}
+
+input:focus{
+    border-color:#2F66F6;
+}
+
+button{
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:12px;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+.phone-btn{
+    background:#2F66F6;
+    color:#fff;
+}
+
+.google-btn{
+    background:#fff;
+    color:#111;
+    border:2px solid #ddd;
+}
+
+.divider{
+    text-align:center;
+    margin:25px 0;
+    color:#999;
+    font-weight:600;
+}
+
+.footer{
+    margin-top:30px;
+    text-align:center;
+    font-size:14px;
+    color:#888;
+}
+
+.footer a{
+    color:#2F66F6;
+    text-decoration:none;
+}
