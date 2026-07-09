@@ -1,1 +1,45 @@
- 
+/* ===========================
+   NAVBAR
+=========================== */
+
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:18px 20px;
+
+    background:#ffffff;
+
+    position:sticky;
+    top:0;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.05);
+
+    z-index:999;
+}
+
+.logo h2{
+    color:#2563EB;
+    font-size:28px;
+}
+
+.logo span{
+    font-size:12px;
+    color:#64748B;
+}
+
+#menuBtn{
+    width:44px;
+    height:44px;
+
+    border:none;
+
+    background:#EFF6FF;
+
+    color:#2563EB;
+
+    border-radius:12px;
+
+    font-size:22px;
+}
