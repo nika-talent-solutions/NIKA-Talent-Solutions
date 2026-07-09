@@ -9,3 +9,65 @@ body{
     background:#F8FAFC;
     color:#0F172A;
 }
+.navbar{
+    position:sticky;
+    top:0;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:18px 20px;
+
+    background:#ffffff;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.05);
+
+    z-index:999;
+}
+
+.logo{
+
+    font-size:24px;
+
+    font-weight:700;
+
+    color:#2563EB;
+
+    line-height:1.1;
+
+}
+
+.logo span{
+
+    display:block;
+
+    font-size:11px;
+
+    color:#64748B;
+
+    font-weight:500;
+
+    letter-spacing:1px;
+
+}
+
+.menu-btn{
+
+    width:44px;
+
+    height:44px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#EFF6FF;
+
+    font-size:22px;
+
+    color:#2563EB;
+
+    cursor:pointer;
+
+}
