@@ -116,7 +116,7 @@ window.location.href="dashboard.html";
 
 }else{
 
-window.location.href="upload-resume.html";
+window.location.href="index.html";
 
 }
 
