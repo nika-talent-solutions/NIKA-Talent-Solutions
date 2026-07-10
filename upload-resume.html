@@ -1,18 +1,50 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 
 <head>
 
-<title>NIKA Talent Solutions</title>
+<meta charset="UTF-8">
 
-<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Upload Resume | NIKA Talent Solutions</title>
+
+<link rel="stylesheet" href="assets/css/global.css">
+<link rel="stylesheet" href="assets/css/resume.css">
 
 </head>
 
 <body>
 
-<h1>Coming Soon...</h1>
+<div class="container">
+
+<h1>📄 Upload Resume</h1>
+
+<p>
+Upload your latest resume in PDF format.
+</p>
+
+<form id="resumeForm">
+
+<input
+type="file"
+id="resume"
+accept=".pdf"
+required>
+
+<button type="submit">
+
+Upload Resume
+
+</button>
+
+</form>
+
+<div id="status"></div>
+
+</div>
+
+<script type="module" src="assets/js/upload.js"></script>
 
 </body>
 
