@@ -34,7 +34,7 @@ onAuthStateChanged(auth, async (user) => {
 
         alert("Access Denied");
 
-        window.location.href = "dashboard.html";
+        window.location.href = "index.html";
         return;
 
     }
