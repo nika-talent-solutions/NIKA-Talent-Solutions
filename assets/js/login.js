@@ -1,54 +1,63 @@
 import { auth, db } from "./firebase.js";
 
 import {
-  GoogleAuthProvider,
-  signInWithPopup
+GoogleAuthProvider,
+signInWithPopup
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 import {
-  doc,
-  getDoc,
-  setDoc,
-  serverTimestamp
+doc,
+getDoc,
+setDoc,
+serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 const googleBtn = document.getElementById("googleLogin");
 
-googleBtn?.addEventListener("click", async () => {
+googleBtn.addEventListener("click", async () => {
 
-  try {
+try{
 
-    const provider = new GoogleAuthProvider();
+const provider = new GoogleAuthProvider();
 
-    const result = await signInWithPopup(auth, provider);
+const result = await signInWithPopup(auth, provider);
 
-    const user = result.user;
+const user = result.user;
 
-    const ref = doc(db, "users", user.uid);
+const userRef = doc(db,"users",user.uid);
 
-    const snap = await getDoc(ref);
+const snap = await getDoc(userRef);
 
-    if (!snap.exists()) {
+if(!snap.exists()){
 
-      await setDoc(ref, {
-        uid: user.uid,
-        name: user.displayName || "",
-        email: user.email || "",
-        phone: user.phoneNumber || "",
-        resumeURL: "",
-        createdAt: serverTimestamp()
-      });
+await setDoc(userRef,{
 
-    }
+uid:user.uid,
 
-    window.location.href = "upload-resume.html";
+name:user.displayName || "",
 
-  } catch (e) {
+email:user.email || "",
 
-    console.error(e);
+phone:user.phoneNumber || "",
 
-    alert(e.message);
+resumeURL:"",
 
-  }
+createdAt:serverTimestamp()
+
+});
+
+}
+
+window.location.href="profile.html";
+
+}
+
+catch(error){
+
+console.error(error);
+
+alert(error.message);
+
+}
 
 });
