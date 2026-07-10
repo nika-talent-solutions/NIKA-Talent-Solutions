@@ -1,14 +1,8 @@
-import { auth, storage, db } from "./firebase.js";
+import { auth, db } from "./firebase.js";
 
 import {
   onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-
-import {
-  ref,
-  uploadBytes,
-  getDownloadURL
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-storage.js";
 
 import {
   doc,
@@ -18,7 +12,6 @@ import {
 
 let currentUser = null;
 
-// Check if user is logged in
 onAuthStateChanged(auth, (user) => {
 
     if (!user) {
@@ -32,7 +25,6 @@ onAuthStateChanged(auth, (user) => {
 
 });
 
-// Upload Resume
 document.getElementById("resumeForm").addEventListener("submit", async (e) => {
 
     e.preventDefault();
@@ -41,41 +33,54 @@ document.getElementById("resumeForm").addEventListener("submit", async (e) => {
 
     if (!file) {
 
-        alert("Please select a PDF.");
-
+        alert("Select a PDF Resume");
         return;
 
     }
 
-    // Only PDF allowed
     if (file.type !== "application/pdf") {
 
         alert("Only PDF files are allowed.");
-
         return;
 
     }
 
+    document.getElementById("status").innerHTML = "Uploading Resume...";
+
+    const formData = new FormData();
+
+    formData.append("file", file);
+
+    formData.append("upload_preset", "nika_resume");
+
     try {
 
-        document.getElementById("status").innerHTML = "Uploading...";
-
-        const storageRef = ref(
-            storage,
-            "resumes/" + currentUser.uid + ".pdf"
+        const response = await fetch(
+            "https://api.cloudinary.com/v1_1/hculcxq4/raw/upload",
+            {
+                method: "POST",
+                body: formData
+            }
         );
 
-        await uploadBytes(storageRef, file);
+        const data = await response.json();
 
-        const downloadURL = await getDownloadURL(storageRef);
+        if (data.error) {
+
+            alert(data.error.message);
+            return;
+
+        }
 
         await updateDoc(doc(db, "users", currentUser.uid), {
 
-            resumeURL: downloadURL,
+            resumeURL: data.secure_url,
 
             resumeName: file.name,
 
-            resumeUploadedAt: serverTimestamp()
+            cloudinaryId: data.public_id,
+
+            updatedAt: serverTimestamp()
 
         });
 
@@ -90,11 +95,11 @@ document.getElementById("resumeForm").addEventListener("submit", async (e) => {
 
     }
 
-    catch (error) {
+    catch (err) {
 
-        console.error(error);
+        console.log(err);
 
-        alert(error.message);
+        alert("Upload Failed");
 
     }
 
