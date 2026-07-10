@@ -2,9 +2,7 @@ import { auth, db } from "./firebase.js";
 
 import {
   GoogleAuthProvider,
-  signInWithPopup,
-  RecaptchaVerifier,
-  signInWithPhoneNumber
+  signInWithPopup
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 import {
@@ -14,110 +12,43 @@ import {
   serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
-// ---------------- Google Login ----------------
-
 const googleBtn = document.getElementById("googleLogin");
 
-if (googleBtn) {
+googleBtn?.addEventListener("click", async () => {
 
-googleBtn.onclick = async () => {
+  try {
 
-const provider = new GoogleAuthProvider();
+    const provider = new GoogleAuthProvider();
 
-try{
+    const result = await signInWithPopup(auth, provider);
 
-const result = await signInWithPopup(auth, provider);
+    const user = result.user;
 
-await checkUser(result.user);
+    const ref = doc(db, "users", user.uid);
 
-}
+    const snap = await getDoc(ref);
 
-catch(e){
+    if (!snap.exists()) {
 
-alert(e.message);
+      await setDoc(ref, {
+        uid: user.uid,
+        name: user.displayName || "",
+        email: user.email || "",
+        phone: user.phoneNumber || "",
+        resumeURL: "",
+        createdAt: serverTimestamp()
+      });
 
-}
+    }
 
-};
+    window.location.href = "upload-resume.html";
 
-}
+  } catch (e) {
 
-// ---------------- Phone Login ----------------
+    console.error(e);
 
-window.recaptchaVerifier = new RecaptchaVerifier(auth,"recaptcha-container",{
+    alert(e.message);
 
-size:"normal"
-
-});
-
-const phoneBtn=document.getElementById("phoneLogin");
-
-if(phoneBtn){
-
-phoneBtn.onclick=async()=>{
-
-const phone=document.getElementById("phone").value;
-
-try{
-
-const confirmation=await signInWithPhoneNumber(auth,phone,window.recaptchaVerifier);
-
-const otp=prompt("Enter OTP");
-
-const result=await confirmation.confirm(otp);
-
-await checkUser(result.user);
-
-}
-
-catch(e){
-
-alert(e.message);
-
-}
-
-};
-
-}
-
-// ---------------- User Check ----------------
-
-async function checkUser(user){
-
-const ref=doc(db,"users",user.uid);
-
-const snap=await getDoc(ref);
-
-if(!snap.exists()){
-
-await setDoc(ref,{
-
-uid:user.uid,
-
-name:user.displayName || "",
-
-email:user.email || "",
-
-phone:user.phoneNumber || "",
-
-resumeURL:"",
-
-createdAt:serverTimestamp()
+  }
 
 });
-
-}
-
-const latest=await getDoc(ref);
-
-if(latest.data().resumeURL){
-
-window.location.href="dashboard.html";
-
-}else{
-
-window.location.href="index.html";
-
-}
-
-}
