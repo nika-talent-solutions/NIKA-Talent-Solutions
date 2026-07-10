@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Panel</title>
+
+<link rel="stylesheet" href="assets/css/global.css">
+<link rel="stylesheet" href="assets/css/admin.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>👨‍💼 Admin Panel</h1>
+
+<form id="jobForm">
+
+<input
+type="text"
+id="title"
+placeholder="Job Title"
+required>
+
+<input
+type="text"
+id="company"
+placeholder="Company Name"
+required>
+
+<input
+type="text"
+id="location"
+placeholder="Location"
+required>
+
+<input
+type="number"
+id="salary"
+placeholder="Salary"
+required>
+
+<select id="type">
+
+<option>Full Time</option>
+
+<option>Part Time</option>
+
+<option>Internship</option>
+
+</select>
+
+<textarea
+id="description"
+placeholder="Job Description"></textarea>
+
+<button>
+
+Post Job
+
+</button>
+
+</form>
+
+<hr>
+
+<h2>Posted Jobs</h2>
+
+<div id="jobs"></div>
+
+</div>
+
+<script type="module" src="assets/js/admin.js"></script>
+
+</body>
+
+</html>
