@@ -16,61 +16,29 @@
 
 <body>
 
-<div class="container">
+<div class="login-box">
 
-    <h1 class="logo">NIKA</h1>
+<h1>Login</h1>
 
-    <p class="subtitle">Talent Solutions</p>
+<button id="googleLogin">
+Continue with Google
+</button>
 
-    <h2>Welcome 👋</h2>
+<br><br>
 
-    <p>
-        Login to upload your resume and apply for jobs.
-    </p>
+<input
+id="phone"
+placeholder="+91XXXXXXXXXX">
 
-    <div class="input-group">
+<button id="phoneLogin">
+Continue with Phone
+</button>
 
-        <label>Mobile Number</label>
-
-        <input
-            type="tel"
-            id="phone"
-            placeholder="+91 9876543210">
-
-    </div>
-
-    <button class="phone-btn" id="sendOtp">
-        Continue with Phone
-    </button>
-
-    <div class="divider">
-        OR
-    </div>
-
-    <button class="google-btn" id="googleLogin">
-        Continue with Google
-    </button>
-
-    <div class="footer">
-
-        By continuing you agree to our
-
-        <br><br>
-
-        <a href="#">Privacy Policy</a>
-
-        •
-
-        <a href="#">Terms & Conditions</a>
-
-    </div>
+<div id="recaptcha-container"></div>
 
 </div>
-<script>
-console.log("Login page loaded");
-</script>
 
+<script type="module" src="assets/js/login.js"></script>
 
-</body>
 
 </html>
